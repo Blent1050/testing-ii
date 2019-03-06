@@ -15,21 +15,34 @@ export default class Dashboard extends Component {
         <button onClick={this.ballBehavior}>Ball</button>
         <button onClick={this.foulBehavior}>Foul</button>
         <button onClick={this.hitBehavior}>Hit</button>
-        <p>Balls: {this.state.balls}</p>
-        <p>Strikes: {this.state.strikes}</p>
+        <Display stats={this.state} />
       </div>
     );
   }
 
   strikeBehavior = () => {
-    this.setState(prevState => {
-      return {
-        strikes: prevState.strikes + 1,
-      };
-    });
+    if (this.state.strikes < 3) {
+      this.setState(prevState => {
+        return {
+          strikes: prevState.strikes + 1,
+        };
+      });
+    } else {
+      this.setState({
+        strikes: 0,
+      });
+    }
   };
   ballBehavior = () => {
-    console.log('Ball Clicked');
+    if (this.state.balls < 4) {
+      this.setState(prevState => {
+        return {
+          balls: prevState.balls + 1,
+        };
+      });
+    } else {
+      this.setState({ balls: 0 });
+    }
   };
   foulBehavior = () => {
     console.log('Foul Clicked');

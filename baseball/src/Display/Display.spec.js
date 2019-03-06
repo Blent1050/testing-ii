@@ -17,11 +17,11 @@ describe('<Display />', () => {
     const { getByTestId } = render(<Display stats={stats} />);
     const strikeCount = getByTestId('strikes').textContent;
     console.log(strikeCount);
-    expect(strikeCount).toEqual(`Strikes: ${stats.strikes}`);
+    expect(strikeCount).toEqual(`${stats.strikes}`);
   });
   it('displays the balls', () => {
     const { getByTestId } = render(<Display stats={stats} />);
     const ballCount = getByTestId('balls').textContent;
-    expect(ballCount).toEqual(`Balls: ${stats.balls}`);
+    expect(ballCount).toEqual(`${stats.balls}`);
   });
 });
